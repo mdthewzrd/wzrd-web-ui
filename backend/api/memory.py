@@ -14,8 +14,8 @@ async def get_memory():
     """Memory and user profile state."""
     config = collect_config()
     memory, user = collect_memory(
-        char_limit=config.memory_char_limit,
-        user_limit=config.user_char_limit,
+        memory_char_limit=config.memory_char_limit,
+        user_char_limit=config.user_char_limit,
     )
     return {
         "memory": to_dict(memory),
