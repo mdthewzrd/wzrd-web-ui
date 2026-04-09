@@ -2,8 +2,8 @@
 
 from fastapi import APIRouter
 
-from hermes_hud.collectors.memory import collect_memory
-from hermes_hud.collectors.config import collect_config
+from backend.collectors.memory import collect_memory
+from backend.collectors.config import collect_config
 from .serialize import to_dict
 
 router = APIRouter()

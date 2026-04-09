@@ -45,25 +45,23 @@ Open http://localhost:3001
 
 - Python 3.11+
 - Node.js 18+ (for building the frontend)
-- [hermes-hud](https://github.com/joeynyc/hermes-hud) package
 - A running Hermes agent with data in `~/.hermes/`
+
+No other packages required — the Web UI reads directly from your agent's data directory.
 
 ## Manual Install
 
 ```bash
-# 1. Install the TUI package (provides data collectors)
-pip install hermes-hud
-
-# 2. Install this package
+# 1. Install this package
 pip install -e .
 
-# 3. Build the frontend
+# 2. Build the frontend
 cd frontend
 npm install
 npm run build
 cp -r dist/* ../backend/static/
 
-# 4. Start the server
+# 3. Start the server
 hermes-hudui
 ```
 
@@ -213,9 +211,11 @@ All under `/api/`:
 
 ## Relationship to the TUI
 
-This is the browser companion to [hermes-hud](https://github.com/joeynyc/hermes-hud) (TUI). They share the same data collectors — hermes-hudui imports hermes-hud's Python package directly. Any improvements to the collectors benefit both.
+This is the browser companion to [hermes-hud](https://github.com/joeynyc/hermes-hud). Both read from the same `~/.hermes/` data directory independently. You can use either one, or both at the same time.
 
-The Web UI adds features the TUI doesn't have: dedicated Memory, Skills, and Sessions tabs; token cost tracking; command palette; theme switcher with live preview.
+The Web UI is fully standalone — it ships its own data collectors and doesn't require the TUI package. It adds features the TUI doesn't have: dedicated Memory, Skills, and Sessions tabs; per-model token cost tracking; command palette; theme switcher with live preview.
+
+If you also have the TUI installed (`pip install hermes-hud`), you can enable it with `pip install hermes-hudui[tui]`.
 
 ## Platform Support
 

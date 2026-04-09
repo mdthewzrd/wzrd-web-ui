@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter
 
-from hermes_hud.snapshot import load_snapshots
+from backend.collectors.snapshot import load_snapshots
 
 router = APIRouter()
 

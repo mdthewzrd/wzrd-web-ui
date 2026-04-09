@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter
 
-from hermes_hud.collectors.cron import collect_cron
+from backend.collectors.cron import collect_cron
 from .serialize import to_dict
 
 router = APIRouter()

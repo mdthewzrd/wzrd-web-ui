@@ -6,7 +6,7 @@ from pathlib import Path
 
 from fastapi import APIRouter
 
-from hermes_hud.collectors.utils import default_hermes_dir
+from backend.collectors.utils import default_hermes_dir
 
 router = APIRouter()
 

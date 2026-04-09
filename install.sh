@@ -64,16 +64,17 @@ if ! command -v npm &>/dev/null; then
     exit 1
 fi
 
-# Install hermes-hud (data collectors)
-if ! $PYTHON -c "import hermes_hud" 2>/dev/null; then
-    echo "→ Installing hermes-hud (data collectors)..."
-    if [ -d "../hermes-hud" ]; then
-        $PYTHON -m pip install -e ../hermes-hud -q
-    else
-        $PYTHON -m pip install hermes-hud -q
-    fi
+# Check for hermes data directory
+HERMES_DIR="${HERMES_HOME:-$HOME/.hermes}"
+if [ ! -d "$HERMES_DIR" ]; then
+    echo ""
+    echo "⚠ No Hermes data found at $HERMES_DIR"
+    echo "  The dashboard will be empty until a Hermes agent runs."
+    echo "  Options:"
+    echo "    1. Install and run Hermes first"
+    echo "    2. Set HERMES_HOME to your agent data directory"
+    echo ""
 fi
-echo "✔ hermes-hud installed"
 
 # Install this package
 echo "→ Installing hermes-hudui..."

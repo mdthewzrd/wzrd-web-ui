@@ -2,12 +2,12 @@
 
 from fastapi import APIRouter
 
-from hermes_hud.collect import collect_all
-from hermes_hud.collectors.cron import collect_cron
-from hermes_hud.collectors.projects import collect_projects
-from hermes_hud.collectors.health import collect_health
-from hermes_hud.collectors.corrections import collect_corrections
-from hermes_hud.snapshot import load_snapshots
+from backend.collectors.collect import collect_all
+from backend.collectors.cron import collect_cron
+from backend.collectors.projects import collect_projects
+from backend.collectors.health import collect_health
+from backend.collectors.corrections import collect_corrections
+from backend.collectors.snapshot import load_snapshots
 from .serialize import to_dict
 
 router = APIRouter()

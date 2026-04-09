@@ -2,7 +2,7 @@
 
 from fastapi import APIRouter
 
-from hermes_hud.collectors.corrections import collect_corrections
+from backend.collectors.corrections import collect_corrections
 from .serialize import to_dict
 
 router = APIRouter()
