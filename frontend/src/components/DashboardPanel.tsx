@@ -346,10 +346,10 @@ function ClosingStatements({ sessions, corrections }: { sessions: any; correctio
 }
 
 export default function DashboardPanel() {
-  const { data, isLoading } = useApi('/dashboard', 30000)
+  const { data } = useApi('/dashboard', 30000)
 
   // Only show loading on initial load, not during background updates
-  if (isLoading && !data) {
+  if (!data) {
     return (
       <Panel title="Dashboard" className="col-span-full">
         <div className="glow text-[13px] animate-pulse">Collecting state...</div>

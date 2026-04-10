@@ -40,6 +40,10 @@ export function useWebSocket(): UseWebSocketReturn {
 
     ws.onmessage = (event) => {
       try {
+        // Handle plain text messages (like "pong") - skip them
+        if (!event.data.startsWith('{')) {
+          return
+        }
         const data: WebSocketMessage = JSON.parse(event.data)
         setLastMessage(data)
 
