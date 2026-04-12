@@ -2,7 +2,10 @@
 
 All notable changes to hermes-hudui are documented here.
 
-## [Unreleased]
+## [0.3.1] — 2026-04-12
+
+### Added
+- **Chat history persistence** — messages and sessions survive page refresh via localStorage. On server restart, backend sessions are re-created and message history migrated automatically.
 
 ---
 
