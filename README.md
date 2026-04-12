@@ -44,6 +44,14 @@ Four themes switchable with `t`: **Neural Awakening** (cyan), **Blade Runner** (
 | `t` | Theme picker |
 | `Ctrl+K` | Command palette |
 
+## Relationship to the TUI
+
+This is the browser companion to [hermes-hud](https://github.com/joeynyc/hermes-hud). Both read from the same `~/.hermes/` data directory independently — use either one, or both at the same time.
+
+The Web UI is fully standalone and adds features the TUI doesn't have: dedicated Memory, Skills, and Sessions tabs; per-model token cost tracking; command palette; live chat; theme switcher.
+
+If you also have the TUI installed, you can enable it with `pip install hermes-hudui[tui]`.
+
 ## Platform Support
 
 macOS · Linux · WSL
