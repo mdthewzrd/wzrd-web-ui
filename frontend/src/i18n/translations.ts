@@ -1,4 +1,4 @@
-// i18n translations for hermes-hudui
+// i18n translations for WZRD.dev Dashboard
 
 export const translations = {
   en: {
@@ -16,6 +16,16 @@ export const translations = {
     'tab.token-costs': 'Costs',
     'tab.corrections': 'Corrections',
     'tab.patterns': 'Patterns',
+
+    // WZRD tabs
+    'tab.zones': 'Zones',
+    'tab.sandboxes': 'Sandboxes',
+    'tab.modes': 'Modes',
+    'tab.agents-wzrd': 'Agents',
+    'tab.piv': 'PIV',
+    'tab.fleet': 'Fleet',
+    'tab.terminal': 'Terminal',
+    'tab.files': 'Files',
 
     // Dashboard
     'dashboard.title': 'Dashboard',
@@ -339,17 +349,17 @@ export const translations = {
     'status.commands': 'commands',
 
     // Boot screen
-    'boot.connecting': 'Connecting to Hermes...',
+    'boot.connecting': 'Connecting to WZRD.dev...',
     'boot.ready': 'Ready',
-    'boot.version': 'hermes-hudui',
+    'boot.version': 'wzrd.dev',
 
     // Theme
     'theme.title': 'Theme',
     'theme.scanlines': 'Scanlines',
-    'theme.neuralAwakening': 'Neural Awakening',
-    'theme.bladeRunner': 'Blade Runner',
-    'theme.fsociety': 'fsociety',
-    'theme.anime': 'Anime',
+    'theme.remiCore': 'Remi Core',
+    'theme.remiDark': 'Remi Dark',
+    'theme.remiTerminal': 'Remi Terminal',
+    'theme.remiMidnight': 'Remi Midnight',
 
     // Command palette
     'commandPalette.placeholder': 'Type a command...',
@@ -371,6 +381,16 @@ export const translations = {
     'tab.corrections': '纠正',
     'tab.patterns': '模式',
     'tab.sudo': 'Sudo',
+
+    // WZRD tabs
+    'tab.zones': '内存区',
+    'tab.sandboxes': '沙箱',
+    'tab.modes': '模式',
+    'tab.agents-wzrd': '代理',
+    'tab.piv': 'PIV',
+    'tab.fleet': '集群',
+    'tab.terminal': '终端',
+    'tab.files': '文件',
 
     // Dashboard
     'dashboard.title': '仪表盘',
@@ -693,17 +713,17 @@ export const translations = {
     'status.commands': '命令',
 
     // Boot screen
-    'boot.connecting': '正在连接 Hermes...',
+    'boot.connecting': '正在连接 WZRD.dev...',
     'boot.ready': '就绪',
-    'boot.version': 'hermes-hudui',
+    'boot.version': 'wzrd.dev',
 
     // Theme
     'theme.title': '主题',
     'theme.scanlines': '扫描线',
-    'theme.neuralAwakening': '神经网络',
-    'theme.bladeRunner': '银翼杀手',
-    'theme.fsociety': '黑客帝国',
-    'theme.anime': '动漫',
+    'theme.remiCore': 'Remi 核心',
+    'theme.remiDark': 'Remi 暗色',
+    'theme.remiTerminal': 'Remi 终端',
+    'theme.remiMidnight': 'Remi 午夜',
 
     // Command palette
     'commandPalette.placeholder': '输入命令...',

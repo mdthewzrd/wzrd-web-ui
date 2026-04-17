@@ -1,15 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from '../i18n'
 
-const HERMES_ASCII = [
-  ' ██╗  ██╗███████╗██████╗ ███╗   ███╗███████╗███████╗',
-  ' ██║  ██║██╔════╝██╔══██╗████╗ ████║██╔════╝██╔════╝',
-  ' ███████║█████╗  ██████╔╝██╔████╔██║█████╗  ███████╗',
-  ' ██╔══██║██╔══╝  ██╔══██╗██║╚██╔╝██║██╔══╝  ╚════██║',
-  ' ██║  ██║███████╗██║  ██║██║ ╚═╝ ██║███████╗███████║',
-  ' ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝',
-]
-
 interface BootScreenProps {
   onComplete: () => void
 }
@@ -17,12 +8,13 @@ interface BootScreenProps {
 export default function BootScreen({ onComplete }: BootScreenProps) {
   const { t } = useTranslation()
   const [visibleLines, setVisibleLines] = useState(0)
-  const [asciiVisible, setAsciiVisible] = useState(false)
+  const [titleVisible, setTitleVisible] = useState(false)
+  const [subtitleVisible, setSubtitleVisible] = useState(false)
   const [fadeOut, setFadeOut] = useState(false)
   const [skipped, setSkipped] = useState(false)
 
   const BOOT_LINES = [
-    `☤ ${t('boot.version')} v0.4.0`,
+    `☤ wzrd.dev v0.4.0`,
     '',
     `${t('boot.connecting')}`,
     'Reading ~/.hermes/state.db',
@@ -37,15 +29,17 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
   ]
 
   useEffect(() => {
-    const asciiTimer = setTimeout(() => setAsciiVisible(true), 200)
+    const titleTimer = setTimeout(() => setTitleVisible(true), 100)
+    const subtitleTimer = setTimeout(() => setSubtitleVisible(true), 400)
     const lineTimers = BOOT_LINES.map((_, i) =>
-      setTimeout(() => setVisibleLines(i + 1), 600 + i * 100)
+      setTimeout(() => setVisibleLines(i + 1), 700 + i * 100)
     )
-    const fadeTimer = setTimeout(() => setFadeOut(true), 600 + BOOT_LINES.length * 100 + 400)
-    const completeTimer = setTimeout(onComplete, 600 + BOOT_LINES.length * 100 + 800)
+    const fadeTimer = setTimeout(() => setFadeOut(true), 700 + BOOT_LINES.length * 100 + 400)
+    const completeTimer = setTimeout(onComplete, 700 + BOOT_LINES.length * 100 + 800)
 
     return () => {
-      clearTimeout(asciiTimer)
+      clearTimeout(titleTimer)
+      clearTimeout(subtitleTimer)
       lineTimers.forEach(clearTimeout)
       clearTimeout(fadeTimer)
       clearTimeout(completeTimer)
@@ -68,17 +62,28 @@ export default function BootScreen({ onComplete }: BootScreenProps) {
       }}
       onClick={handleSkip}
     >
-      {/* ASCII logo — hidden on very narrow screens */}
-      <pre
-        className="gradient-text text-[8px] sm:text-[13px] leading-tight mb-4 sm:mb-6 transition-opacity duration-300 text-center overflow-hidden"
+      {/* Title */}
+      <div
+        className="gradient-text text-3xl sm:text-5xl font-bold tracking-widest mb-2 transition-all duration-500"
         style={{
-          opacity: asciiVisible ? 1 : 0,
-          maxWidth: '90vw',
-          whiteSpace: 'pre',
+          opacity: titleVisible ? 1 : 0,
+          transform: titleVisible ? 'translateY(0)' : 'translateY(10px)',
         }}
       >
-        {HERMES_ASCII.join('\n')}
-      </pre>
+        wzrd.dev
+      </div>
+
+      {/* Subtitle */}
+      <div
+        className="text-sm sm:text-base tracking-[0.3em] uppercase mb-8 sm:mb-10 transition-all duration-500"
+        style={{
+          color: 'var(--hud-text-dim)',
+          opacity: subtitleVisible ? 1 : 0,
+          transform: subtitleVisible ? 'translateY(0)' : 'translateY(6px)',
+        }}
+      >
+        dashboard
+      </div>
 
       {/* Boot text */}
       <div className="text-[13px] w-[90vw] max-w-[400px] px-4">

@@ -1,4 +1,4 @@
-"""Intelligent caching for Hermes HUD collectors.
+"""Intelligent caching for WZRD.dev Dashboard collectors.
 
 Caches expensive operations with automatic invalidation based on file mtimes.
 """

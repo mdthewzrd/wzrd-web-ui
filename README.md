@@ -1,6 +1,6 @@
-# ☤ Hermes HUD — Web UI
+# ☤ WZRD.dev Dashboard
 
-A browser-based consciousness monitor for [Hermes](https://github.com/nousresearch/hermes-agent), the AI agent with persistent memory.
+A browser-based dashboard for [Remi](https://github.com/nousresearch/hermes-agent) and project agents — monitor and manage your AI agents with persistent memory.
 
 Same data, same soul, same dashboard that made the [TUI version](https://github.com/joeynyc/hermes-hud) popular — now in your browser.
 
@@ -11,19 +11,19 @@ Same data, same soul, same dashboard that made the [TUI version](https://github.
 ## Quick Start
 
 ```bash
-git clone https://github.com/joeynyc/hermes-hudui.git
-cd hermes-hudui
+git clone https://github.com/joeynyc/remi-dashboard-web.git
+cd remi-dashboard-web
 ./install.sh
-hermes-hudui
+remi-dashboard
 ```
 
 Open http://localhost:3001
 
-**Requirements:** Python 3.11+, Node.js 18+, a running Hermes agent with data in `~/.hermes/`
+**Requirements:** Python 3.11+, Node.js 18+, a running agent with data in `~/.hermes/`
 
 On future runs:
 ```bash
-source venv/bin/activate && hermes-hudui
+source venv/bin/activate && remi-dashboard
 ```
 
 ## What's Inside
@@ -54,9 +54,9 @@ This is the browser companion to [hermes-hud](https://github.com/joeynyc/hermes-
 
 The Web UI is fully standalone and adds features the TUI doesn't have: dedicated Memory, Skills, and Sessions tabs; per-model token cost tracking; command palette; live chat; theme switcher.
 
-If you also have the TUI installed, you can enable it with `pip install 'hermes-hudui[tui]'`.
+If you also have the TUI installed, you can enable it with `pip install 'remi-dashboard-web[tui]'`.
 
-(Quotes around `'hermes-hudui[tui]'` are required in zsh, where the unquoted `[tui]` is interpreted as a glob pattern. Bash and fish accept the unquoted form, but the quoted form is safe everywhere.)
+(Quotes around `'remi-dashboard-web[tui]'` are required in zsh, where the unquoted `[tui]` is interpreted as a glob pattern. Bash and fish accept the unquoted form, but the quoted form is safe everywhere.)
 
 ## Platform Support
 
@@ -68,10 +68,10 @@ MIT — see [LICENSE](LICENSE).
 
 ---
 
-<a href="https://www.star-history.com/?repos=joeynyc%2Fhermes-hudui&type=date&logscale=&legend=top-left">
+<a href="https://www.star-history.com/?repos=joeynyc%2Fremi-dashboard-web&type=date&logscale=&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=joeynyc/hermes-hudui&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=joeynyc/hermes-hudui&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=joeynyc/hermes-hudui&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=joeynyc/remi-dashboard-web&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=joeynyc/remi-dashboard-web&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=joeynyc/remi-dashboard-web&type=date&legend=top-left" />
  </picture>
 </a>

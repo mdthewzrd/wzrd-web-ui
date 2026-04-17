@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
 
-export type ThemeId = 'ai' | 'blade-runner' | 'fsociety' | 'anime'
+export type ThemeId = 'remi-core' | 'remi-dark' | 'remi-terminal' | 'remi-midnight'
 
 interface ThemeContextValue {
   theme: ThemeId
@@ -10,22 +10,22 @@ interface ThemeContextValue {
 }
 
 const ThemeContext = createContext<ThemeContextValue>({
-  theme: 'ai',
+  theme: 'remi-core',
   setTheme: () => {},
   scanlines: false,
   setScanlines: () => {},
 })
 
 export const THEMES: { id: ThemeId; labelKey: string; icon: string }[] = [
-  { id: 'ai', labelKey: 'theme.neuralAwakening', icon: '◆' },
-  { id: 'blade-runner', labelKey: 'theme.bladeRunner', icon: '◈' },
-  { id: 'fsociety', labelKey: 'theme.fsociety', icon: '▣' },
-  { id: 'anime', labelKey: 'theme.anime', icon: '◎' },
+  { id: 'remi-core', labelKey: 'theme.remiCore', icon: '◆' },
+  { id: 'remi-dark', labelKey: 'theme.remiDark', icon: '◈' },
+  { id: 'remi-terminal', labelKey: 'theme.remiTerminal', icon: '▣' },
+  { id: 'remi-midnight', labelKey: 'theme.remiMidnight', icon: '◎' },
 ]
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<ThemeId>(() => {
-    return (localStorage.getItem('hud-theme') as ThemeId) || 'ai'
+    return (localStorage.getItem('hud-theme') as ThemeId) || 'remi-core'
   })
   const [scanlines, setScanlinesState] = useState(() => {
     return localStorage.getItem('hud-scanlines') === 'true'

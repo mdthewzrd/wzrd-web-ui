@@ -13,30 +13,30 @@
   font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
-/* ── Neural Awakening (default) ─────────────────────────── */
-[data-theme="ai"] {
-  --hud-bg-deep: #0a0a12;
-  --hud-bg-surface: #0e1020;
-  --hud-bg-panel: #141830;
-  --hud-bg-hover: #1c2040;
-  --hud-primary: #00d4ff;
-  --hud-primary-dim: #0087cc;
-  --hud-primary-glow: rgba(0, 212, 255, 0.4);
-  --hud-secondary: #00ffff;
-  --hud-accent: #ffd700;
-  --hud-text: #dadada;
-  --hud-text-dim: #6a7490;
-  --hud-border: rgba(0, 212, 255, 0.25);
-  --hud-border-bright: rgba(0, 212, 255, 0.5);
-  --hud-success: #00ffaa;
-  --hud-warning: #ffd700;
-  --hud-error: #ff4444;
-  --hud-gradient-start: #00afff;
-  --hud-gradient-end: #00ffff;
+/* ── Remi Core (default) — Gold gradient theme ─────────── */
+[data-theme="remi-core"] {
+  --hud-bg-deep: #0a0a08;
+  --hud-bg-surface: #0f0e0a;
+  --hud-bg-panel: #16140e;
+  --hud-bg-hover: #1e1b12;
+  --hud-primary: #d4a017;
+  --hud-primary-dim: #b8860b;
+  --hud-primary-glow: rgba(212, 160, 23, 0.35);
+  --hud-secondary: #ffd700;
+  --hud-accent: #ff9f1c;
+  --hud-text: #e8dcc8;
+  --hud-text-dim: #7a7060;
+  --hud-border: rgba(212, 160, 23, 0.2);
+  --hud-border-bright: rgba(212, 160, 23, 0.45);
+  --hud-success: #7ec850;
+  --hud-warning: #ffc107;
+  --hud-error: #e05252;
+  --hud-gradient-start: #8b6914;
+  --hud-gradient-end: #ffd700;
 }
 
-/* ── Blade Runner ───────────────────────────────────────── */
-[data-theme="blade-runner"] {
+/* ── Remi Dark ───────────────────────────────────────── */
+[data-theme="remi-dark"] {
   --hud-bg-deep: #0a0800;
   --hud-bg-surface: #141008;
   --hud-bg-panel: #1c1810;
@@ -57,8 +57,8 @@
   --hud-gradient-end: #ffaf00;
 }
 
-/* ── fsociety ───────────────────────────────────────────── */
-[data-theme="fsociety"] {
+/* ── Remi Terminal ───────────────────────────────────── */
+[data-theme="remi-terminal"] {
   --hud-bg-deep: #000000;
   --hud-bg-surface: #080808;
   --hud-bg-panel: #101010;
@@ -79,8 +79,8 @@
   --hud-gradient-end: #00ff00;
 }
 
-/* ── Anime (Mewtwo) ─────────────────────────────────────── */
-[data-theme="anime"] {
+/* ── Remi Midnight ─────────────────────────────────────── */
+[data-theme="remi-midnight"] {
   --hud-bg-deep: #0d001a;
   --hud-bg-surface: #150025;
   --hud-bg-panel: #1a0030;

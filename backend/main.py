@@ -1,4 +1,4 @@
-"""Hermes HUD Web UI — FastAPI backend."""
+"""WZRD.dev Dashboard — FastAPI backend."""
 
 from __future__ import annotations
 
@@ -39,6 +39,15 @@ from .api import (
     chat,
     sudo,
 )
+from .api import wzrd_zones
+from .api import wzrd_sandboxes
+from .api import wzrd_modes
+from .api import wzrd_agents
+from .api import wzrd_piv
+from .api import wzrd_fleet
+from .api import wzrd_blueprints
+from .api import terminal
+from .api import files
 from .file_watcher import start_watcher, stop_watcher
 from .websocket_manager import ws_manager
 
@@ -53,17 +62,17 @@ async def lifespan(app: FastAPI):
     # Startup
     hermes_dir = os.environ.get("HERMES_HOME") or os.path.expanduser("~/.hermes")
     await start_watcher(hermes_dir)
-    logger.info(f"Hermes HUD started, watching {hermes_dir}")
+    logger.info(f"WZRD.dev Dashboard started, watching {hermes_dir}")
 
     yield
 
     # Shutdown
     await stop_watcher()
-    logger.info("Hermes HUD stopped")
+    logger.info("WZRD.dev Dashboard stopped")
 
 
 app = FastAPI(
-    title="Hermes HUD",
+    title="WZRD.dev Dashboard",
     version="0.1.0",
     lifespan=lifespan,
 )
@@ -124,6 +133,19 @@ app.include_router(cache.router, prefix="/api")
 app.include_router(chat.router, prefix="/api")
 app.include_router(sudo.router, prefix="/api")
 
+# WZRD extension routes
+app.include_router(wzrd_zones.router, prefix="/api")
+app.include_router(wzrd_sandboxes.router, prefix="/api")
+app.include_router(wzrd_modes.router, prefix="/api")
+app.include_router(wzrd_agents.router, prefix="/api")
+app.include_router(wzrd_piv.router, prefix="/api")
+app.include_router(wzrd_fleet.router, prefix="/api")
+app.include_router(wzrd_blueprints.router, prefix="/api")
+
+# Terminal and Files routes
+app.include_router(terminal.router)
+app.include_router(files.router, prefix="/api")
+
 # Serve frontend static files (after API routes so /api takes priority)
 if STATIC_DIR.exists():
     _static_app = StaticFiles(directory=str(STATIC_DIR), html=True)
@@ -131,8 +153,8 @@ if STATIC_DIR.exists():
 
 
 def cli():
-    """CLI entry point: hermes-hudui"""
-    parser = argparse.ArgumentParser(description="Hermes HUD Web UI")
+    """CLI entry point: remi-dashboard"""
+    parser = argparse.ArgumentParser(description="WZRD.dev Dashboard")
     parser.add_argument("--port", type=int, default=3001, help="Port (default: 3001)")
     parser.add_argument("--host", default="127.0.0.1", help="Host (default: 127.0.0.1)")
     parser.add_argument(

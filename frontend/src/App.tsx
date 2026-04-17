@@ -18,6 +18,14 @@ import TokenCostsPanel from './components/TokenCostsPanel'
 import CorrectionsPanel from './components/CorrectionsPanel'
 import PatternsPanel from './components/PatternsPanel'
 import SudoPanel from './components/SudoPanel'
+import ZonesPanel from './components/ZonesPanel'
+import SandboxPanel from './components/SandboxPanel'
+import ModesPanel from './components/ModesPanel'
+import ProjectAgentsPanel from './components/ProjectAgentsPanel'
+import PIVPanel from './components/PIVPanel'
+import FleetPanel from './components/FleetPanel'
+import TerminalPanel from './components/TerminalPanel'
+import FilesPanel from './components/FilesPanel'
 import { useI18n } from './i18n'
 
 function TabContent({ tab }: { tab: TabId }) {
@@ -36,6 +44,14 @@ function TabContent({ tab }: { tab: TabId }) {
     case 'corrections': return <CorrectionsPanel />
     case 'patterns': return <PatternsPanel />
     case 'sudo': return <SudoPanel />
+    case 'zones': return <ZonesPanel />
+    case 'sandboxes': return <SandboxPanel />
+    case 'modes': return <ModesPanel />
+    case 'agents-wzrd': return <ProjectAgentsPanel />
+    case 'piv': return <PIVPanel />
+    case 'fleet': return <FleetPanel />
+    case 'terminal': return <TerminalPanel />
+    case 'files': return <FilesPanel />
     default: return <DashboardPanel />
   }
 }
@@ -56,6 +72,14 @@ const GRID_CLASS: Record<TabId, string> = {
   corrections: 'grid-cols-1',
   patterns: 'grid-cols-1 lg:grid-cols-2',
   sudo: 'grid-cols-1 lg:grid-cols-2',
+  zones: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+  sandboxes: 'grid-cols-1',
+  modes: 'grid-cols-1',
+  'agents-wzrd': 'grid-cols-1 lg:grid-cols-2',
+  piv: 'grid-cols-1',
+  fleet: 'grid-cols-1',
+  terminal: 'grid-cols-1',
+  files: 'grid-cols-1',
 }
 
 export default function App() {
@@ -103,6 +127,16 @@ export default function App() {
 
       {/* Chat tab: fixed-height, no page scroll — message thread scrolls internally */}
       {activeTab === 'chat' ? (
+        <div style={{ flex: '1 1 0', height: 0, minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+          <div className="p-2 h-full">
+            <TabContent tab={activeTab} />
+          </div>
+        </div>
+      ) : activeTab === 'terminal' ? (
+        <div style={{ flex: '1 1 0', height: 0, minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+          <TabContent tab={activeTab} />
+        </div>
+      ) : activeTab === 'files' ? (
         <div style={{ flex: '1 1 0', height: 0, minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div className="p-2 h-full">
             <TabContent tab={activeTab} />

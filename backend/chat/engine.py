@@ -130,7 +130,7 @@ class ChatEngine:
         """Create a new chat session."""
         if not self._cli_available:
             raise ChatNotAvailableError(
-                "Hermes CLI not available. Run: pip install 'hermes-hudui[chat]'  "
+                "Remi CLI not available. Run: pip install 'remi-dashboard-web[chat]'  "
                 "(quotes required in zsh)"
             )
 

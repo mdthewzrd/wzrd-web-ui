@@ -1,0 +1,66 @@
+name: "dashboard-setup"
+description: "Deploy and verify both WZRD.dev dashboards (web + TUI)"
+version: "1.0.0"
+category: "wzrd"
+author: "WZRD.dev"
+
+inputs:
+  - name: port
+    type: string
+    description: "Port for web dashboard"
+    default: "3001"
+  - name: refresh_interval
+    type: string
+    description: "TUI auto-refresh interval in seconds"
+    default: "10"
+
+steps:
+  - name: "Install Python dependencies"
+    type: execute
+    config:
+      command: "~/wzrd-dev/hermes/hermes-agent/venv/bin/python3 -m pip install -e ~/wzrd-dev/remi-dashboard-web -e ~/wzrd-dev/remi-dashboard-tui textual pyyaml pyfiglet fastapi uvicorn watchfiles"
+
+  - name: "Install Node dependencies and build frontend"
+    type: execute
+    config:
+      command: "cd ~/wzrd-dev/remi-dashboard-web/frontend && npm install && npm run build"
+
+  - name: "Copy built frontend to backend static"
+    type: execute
+    config:
+      command: "cd ~/wzrd-dev/remi-dashboard-web && rm -rf backend/static/assets/* && cp -r frontend/dist/* backend/static/"
+
+  - name: "Validate web dashboard API"
+    type: execute
+    config:
+      command: >
+        ~/wzrd-dev/hermes/hermes-agent/venv/bin/python3 -c "
+        from backend.main import app
+        from fastapi.testclient import TestClient
+        c = TestClient(app)
+        endpoints = ['/api/dashboard','/api/health','/api/wzrd/zones','/api/wzrd/sandboxes','/api/wzrd/modes','/api/wzrd/agents','/api/wzrd/piv','/api/wzrd/fleet','/api/files/tree']
+        fails = [(p, c.get(p).status_code) for p in endpoints if c.get(p).status_code != 200]
+        assert not fails, f'Failed: {fails}'
+        print(f'All {len(endpoints)} endpoints OK')
+        "
+
+  - name: "Validate TUI dashboard"
+    type: execute
+    config:
+      command: >
+        ~/wzrd-dev/hermes/hermes-agent/venv/bin/python3 -c "
+        from hermes_hud.hud import main
+        from hermes_hud.collectors.wzrd_zones import collect_zones
+        from hermes_hud.collectors.wzrd_sandboxes import collect_sandboxes
+        from hermes_hud.collectors.wzrd_modes import collect_modes
+        from hermes_hud.collectors.wzrd_agents import collect_agents
+        from hermes_hud.collectors.wzrd_piv import collect_piv
+        from hermes_hud.collectors.wzrd_fleet import collect_fleet
+        print('TUI + 6 WZRD collectors OK')
+        "
+
+  - name: "Start web dashboard"
+    type: execute
+    config:
+      command: "cd ~/wzrd-dev/remi-dashboard-web && ~/wzrd-dev/hermes/hermes-agent/venv/bin/python3 -m uvicorn backend.main:app --host 0.0.0.0 --port {{ inputs.port }}"
+    note: "Web dashboard running at http://localhost:{{ inputs.port }}"

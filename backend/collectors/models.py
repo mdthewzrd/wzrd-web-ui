@@ -1,4 +1,4 @@
-"""Data models for Hermes HUD."""
+"""Data models for WZRD.dev Dashboard."""
 
 from __future__ import annotations
 

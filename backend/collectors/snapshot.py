@@ -1,4 +1,4 @@
-"""Snapshot Hermes HUD state for diff tracking over time.
+"""Snapshot WZRD.dev Dashboard state for diff tracking over time.
 
 Run this daily (via cron or hermes cron) to build a history of growth.
 Snapshots are stored as JSONL in ~/.hermes-hud/snapshots.jsonl

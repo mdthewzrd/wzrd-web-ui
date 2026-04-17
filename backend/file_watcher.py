@@ -1,4 +1,4 @@
-"""File watcher service for Hermes HUD.
+"""File watcher service for WZRD.dev Dashboard.
 
 Watches ~/.hermes/ directory for changes and broadcasts updates via WebSocket.
 """

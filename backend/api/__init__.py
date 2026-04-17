@@ -1,1 +1,1 @@
-"""API routes for Hermes HUD."""
+"""API routes for WZRD.dev Dashboard."""

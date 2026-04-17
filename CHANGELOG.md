@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to hermes-hudui are documented here.
+All notable changes to remi-dashboard-web are documented here.
 
 ## [Unreleased]
 

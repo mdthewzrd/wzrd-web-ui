@@ -17,6 +17,14 @@ export const TABS = [
   { id: 'corrections', labelKey: 'tab.corrections', key: null },
   { id: 'patterns', labelKey: 'tab.patterns', key: null },
   { id: 'sudo', labelKey: 'tab.sudo', key: null },
+  { id: 'zones', labelKey: 'tab.zones', key: null },
+  { id: 'sandboxes', labelKey: 'tab.sandboxes', key: null },
+  { id: 'modes', labelKey: 'tab.modes', key: null },
+  { id: 'agents-wzrd', labelKey: 'tab.agents-wzrd', key: null },
+  { id: 'piv', labelKey: 'tab.piv', key: null },
+  { id: 'fleet', labelKey: 'tab.fleet', key: null },
+  { id: 'terminal', labelKey: 'tab.terminal', key: null },
+  { id: 'files', labelKey: 'tab.files', key: null },
 ] as const
 
 export type TabId = typeof TABS[number]['id']
@@ -72,7 +80,7 @@ export default function TopBar({ activeTab, onTabChange }: TopBarProps) {
          style={{ borderColor: 'var(--hud-border)', background: 'var(--hud-bg-surface)' }}>
       {/* Logo */}
       <span className="gradient-text font-bold text-[13px] mr-3 tracking-wider cursor-pointer shrink-0"
-            onClick={() => onTabChange('dashboard')}>☤ HERMES</span>
+            onClick={() => onTabChange('dashboard')}>☤ WZRD.DEV</span>
 
       {/* Tabs */}
       <div className="flex gap-0.5 flex-1 overflow-x-auto" style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>

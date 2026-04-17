@@ -1,4 +1,4 @@
-"""Collect all Hermes HUD data into a single state object."""
+"""Collect all WZRD.dev Dashboard data into a single state object."""
 
 from __future__ import annotations
 
@@ -46,7 +46,7 @@ def collect_all(hermes_dir: str | None = None) -> HUDState:
 
 def print_summary(state: HUDState):
     """Quick text dump for testing."""
-    print(f"=== Hermes HUD State (collected {state.collected_at:%Y-%m-%d %H:%M:%S}) ===\n")
+    print(f"=== WZRD.dev Dashboard State (collected {state.collected_at:%Y-%m-%d %H:%M:%S}) ===\n")
 
     print(f"◆ Config: {state.config.provider}/{state.config.model} | backend={state.config.backend}")
     print(f"  toolsets: {', '.join(state.config.toolsets)}")

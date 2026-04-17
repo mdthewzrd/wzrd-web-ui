@@ -1,4 +1,4 @@
-"""Shared utilities for Hermes HUD collectors."""
+"""Shared utilities for WZRD.dev Dashboard collectors."""
 
 import os
 from datetime import datetime
@@ -45,11 +45,78 @@ def default_hermes_dir(hermes_dir: str | None = None) -> str:
 def default_projects_dir(projects_dir: str | None = None) -> str:
     """Return the projects directory.
 
-    Priority: explicit arg > HERMES_HUD_PROJECTS_DIR env var > ~/projects
+    Priority: explicit arg > REMI_DASHBOARD_PROJECTS_DIR env var > ~/projects
     """
     if projects_dir:
         return projects_dir
-    return os.environ.get("HERMES_HUD_PROJECTS_DIR", os.path.expanduser("~/projects"))
+    return os.environ.get(
+        "REMI_DASHBOARD_PROJECTS_DIR", os.path.expanduser("~/projects")
+    )
+
+
+# ── WZRD.dev Path Resolution ────────────────────────────────
+
+
+def default_wzrd_dir(wzrd_dir: str | None = None) -> str:
+    """Return the WZRD.dev root directory.
+
+    Priority: explicit arg > WZRD_HOME env var > ~/wzrd-dev
+    """
+    if wzrd_dir:
+        return wzrd_dir
+    return os.environ.get("WZRD_HOME", os.path.expanduser("~/wzrd-dev"))
+
+
+def default_wzrd_memory_dir(memory_dir: str | None = None) -> str:
+    """Return the WZRD memory directory.
+
+    Priority: explicit arg > WZRD_MEMORY_PATH env var > {wzrd_dir}/memory
+    """
+    if memory_dir:
+        return memory_dir
+    env = os.environ.get("WZRD_MEMORY_PATH")
+    if env:
+        return env
+    return os.path.join(default_wzrd_dir(), "memory")
+
+
+def default_wzrd_blueprint_dir(blueprint_dir: str | None = None) -> str:
+    """Return the WZRD blueprints directory.
+
+    Priority: explicit arg > WZRD_BLUEPRINT_DIR env var > {wzrd_dir}/blueprints
+    """
+    if blueprint_dir:
+        return blueprint_dir
+    env = os.environ.get("WZRD_BLUEPRINT_DIR")
+    if env:
+        return env
+    return os.path.join(default_wzrd_dir(), "blueprints")
+
+
+def default_wzrd_hermes_dir(hermes_dir: str | None = None) -> str:
+    """Return the WZRD hermes directory (session state, sandboxes, PIV).
+
+    Priority: explicit arg > HERMES_HOME env var > {wzrd_dir}/hermes
+    """
+    if hermes_dir:
+        return hermes_dir
+    env = os.environ.get("HERMES_HOME")
+    if env:
+        return env
+    return os.path.join(default_wzrd_dir(), "hermes")
+
+
+def default_wzrd_agents_dir(agents_dir: str | None = None) -> str:
+    """Return the WZRD project agents directory.
+
+    Priority: explicit arg > WZRD_AGENTS_DIR env var > {wzrd_hermes_dir}/hermes-agent/project_agents
+    """
+    if agents_dir:
+        return agents_dir
+    env = os.environ.get("WZRD_AGENTS_DIR")
+    if env:
+        return env
+    return os.path.join(default_wzrd_hermes_dir(), "hermes-agent", "project_agents")
 
 
 def safe_get(row, key, default=None):

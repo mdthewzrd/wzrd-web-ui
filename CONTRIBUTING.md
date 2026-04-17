@@ -1,12 +1,12 @@
-# Contributing to Hermes HUD Web UI
+# Contributing to WZRD.dev Dashboard
 
 Thanks for your interest in contributing.
 
 ## Development Setup
 
 ```bash
-git clone https://github.com/joeynyc/hermes-hudui.git
-cd hermes-hudui
+git clone https://github.com/joeynyc/remi-dashboard-web.git
+cd remi-dashboard-web
 
 # Create and activate virtual environment
 python3.11 -m venv venv
